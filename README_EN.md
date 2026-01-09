@@ -1,52 +1,52 @@
-# 🏛️ 시민의 목소리가 만드는 더 나은 대한민국, 국회잇슈
+# 🏛️ National Assembly Issue - A Better Korea Through Citizens' Voices
 
-[English](./README_EN.md)
+[한국어](./README.md)
 
-## 📌 서비스 소개
+## 📌 Service Introduction
 
-국회잇슈는 복잡한 법률안을 시민들이 쉽게 이해하고, 찬성/반대 의견을 표현하며, AI 챗봇을 통해 궁금한 점을 물어볼 수 있는 국회 법률안 참여 플랫폼입니다. 국회 회의록과 법률안 정보를 요약하여 실시간으로 제공하여 민주주의를 더욱 활성화합니다.
-
-
-## ✨ 주요 기능
-
-### 📜 법률안 조회 및 투표
-- 발의된 법률안 목록 조회 및 상세 정보 확인
-- 법률안에 대한 찬성/반대 투표 참여
-- 실시간 투표율 및 참여자 수 확인
-- 카테고리별 법률안 필터링 (교통, 주거, 경제, 복지, 환경, 교육 등)
-- 최신순, 투표순 정렬 기능
-
-### 🔥 인기 법률안 추천
-- 투표율이 높은 HOT 법률안 하이라이트
-- 실시간 인기 법률안 마키 슬라이더
-- 시민 참여도가 높은 이슈 우선 노출
-
-### 🏛️ 국회 회의 요약
-- AI가 분석한 국회 회의록 요약 제공
-- 오늘자 국회 활동 실시간 업데이트
-- 주요 논의 사항 및 안건 한눈에 파악
-
-### 🤖 AI 챗봇 도우미
-- **법률안 챗봇**: 법률안에 대한 궁금한 점을 실시간으로 질문
-- **회의 챗봇**: 국회 회의록 내용에 대한 상세 설명 제공
-- **스트리밍 응답**: SSE(Server-Sent Events) 기반 실시간 대화형 인터페이스
-
-### 🔍 통합 검색
-- 법률안 제목 및 내용 검색
-- 실시간 검색 결과 업데이트
+National Assembly Issue is a civic engagement platform that helps citizens easily understand complex legislation, express their support or opposition, and ask questions through an AI chatbot. It provides real-time summaries of National Assembly proceedings and bill information to promote democratic participation.
 
 
-## 🛠️ 기술 스택
+## ✨ Key Features
+
+### 📜 Bill Viewing and Voting
+- Browse and view detailed information on proposed bills
+- Participate in approval/opposition voting on bills
+- Real-time voting rate and participant count
+- Filter bills by category (Transportation, Housing, Economy, Welfare, Environment, Education, etc.)
+- Sort by latest or vote count
+
+### 🔥 Popular Bill Recommendations
+- Highlight HOT bills with high voting rates
+- Real-time popular bill marquee slider
+- Priority display for high citizen engagement issues
+
+### 🏛️ National Assembly Meeting Summaries
+- AI-analyzed National Assembly meeting summaries
+- Real-time updates on today's Assembly activities
+- Overview of key discussions and agendas
+
+### 🤖 AI Chatbot Assistant
+- **Bill Chatbot**: Real-time Q&A about legislation
+- **Meeting Chatbot**: Detailed explanations of Assembly proceedings
+- **Streaming Response**: SSE (Server-Sent Events) based real-time conversational interface
+
+### 🔍 Integrated Search
+- Search by bill title and content
+- Real-time search result updates
+
+
+## 🛠️ Tech Stack
 
 ### Backend
 - **Framework**: Spring Boot 3.5.6
 - **Language**: Java 21
 - **Database**: MySQL
 - **ORM**: Spring Data JPA
-- **Reactive**: Spring WebFlux (비동기 스트리밍)
+- **Reactive**: Spring WebFlux (async streaming)
 - **External APIs**: 
-  - 국회 열린 API (법률안, 회의록 데이터)
-  - Upstage AI API (LLM 챗봇, 문서 분석)
+  - National Assembly Open API (bills, meeting records)
+  - Upstage AI API (LLM chatbot, document analysis)
 - **PDF Processing**: Apache PDFBox 3.0.3
 - **HTML Parsing**: Jsoup 1.17.2
 
@@ -66,7 +66,7 @@
 - **CSS Processing**: PostCSS 8.5.6, Autoprefixer 10.4.21
 
 
-## 🏗️ 시스템 아키텍처
+## 🏗️ System Architecture
 
 ```
 ┌─────────────┐     ┌──────────────────────────────────────────────┐
@@ -90,30 +90,30 @@
                     │                     │                          │
                     │  ┌──────────┐  ┌─────────────────────────┐   │
                     │  │  MySQL   │  │    External APIs         │   │
-                    │  │ Database │  │  • 국회 열린 API         │   │
+                    │  │ Database │  │  • National Assembly API │   │
                     │  └──────────┘  │  • Upstage AI API        │   │
                     │                └─────────────────────────┘   │
                     └──────────────────────────────────────────────┘
 ```
 
 
-## 📁 프로젝트 구조
+## 📁 Project Structure
 
 ### Backend
 ```
 backend/
 ├── src/main/java/com/donzo/naitssu/
 │   ├── domain/
-│   │   ├── bill/                    # 법률안 도메인
-│   │   │   ├── controller/          # REST API 컨트롤러
-│   │   │   ├── service/             # 비즈니스 로직
+│   │   ├── bill/                    # Bill domain
+│   │   │   ├── controller/          # REST API controllers
+│   │   │   ├── service/             # Business logic
 │   │   │   │   ├── BillService.java
-│   │   │   │   ├── AssemblyApiService.java  # 국회 API 연동
-│   │   │   │   └── UpstageService.java      # AI 요약
+│   │   │   │   ├── AssemblyApiService.java  # National Assembly API integration
+│   │   │   │   └── UpstageService.java      # AI summarization
 │   │   │   ├── repository/          # JPA Repository
 │   │   │   ├── entity/              # JPA Entity
-│   │   │   └── dto/                 # 요청/응답 DTO
-│   │   ├── meeting/                 # 국회 회의 도메인
+│   │   │   └── dto/                 # Request/Response DTOs
+│   │   ├── meeting/                 # Meeting domain
 │   │   │   ├── controller/
 │   │   │   ├── service/
 │   │   │   │   ├── MeetingService.java
@@ -121,27 +121,27 @@ backend/
 │   │   │   │   ├── MeetingSummaryService.java
 │   │   │   │   ├── DocumentParserService.java
 │   │   │   │   └── PdfProcessingService.java
-│   │   │   ├── scheduler/           # 자동 업데이트 스케줄러
+│   │   │   ├── scheduler/           # Auto-update scheduler
 │   │   │   ├── repository/
 │   │   │   ├── entity/
 │   │   │   └── dto/
-│   │   ├── chatbot/                 # AI 챗봇 도메인
+│   │   ├── chatbot/                 # AI Chatbot domain
 │   │   │   ├── controller/
 │   │   │   ├── service/
 │   │   │   │   ├── ChatBotService.java
-│   │   │   │   └── UpstageApiService.java  # SSE 스트리밍
+│   │   │   │   └── UpstageApiService.java  # SSE streaming
 │   │   │   └── dto/
-│   │   ├── vote/                    # 투표 도메인
+│   │   ├── vote/                    # Vote domain
 │   │   │   ├── entity/
 │   │   │   └── repository/
-│   │   └── assembly/                # 국회 세션 도메인
+│   │   └── assembly/                # Assembly session domain
 │   │       └── entity/
 │   └── global/
-│       ├── config/                  # 설정
+│       ├── config/                  # Configuration
 │       │   ├── CorsConfig.java
 │       │   └── WebClientConfig.java
 │       └── entity/
-│           └── BaseEntity.java      # 공통 엔티티
+│           └── BaseEntity.java      # Common entity
 └── build.gradle
 ```
 
@@ -150,10 +150,10 @@ backend/
 frontend/
 ├── src/
 │   ├── apis/              
-│   │   ├── client/        # API 클라이언트 설정
-│   │   ├── hooks/         # React Query 커스텀 훅
-│   │   ├── services/      # API 서비스 함수
-│   │   └── types/         # API 타입 정의
+│   │   ├── client/        # API client configuration
+│   │   ├── hooks/         # React Query custom hooks
+│   │   ├── services/      # API service functions
+│   │   └── types/         # API type definitions
 │   ├── components/        
 │   │   ├── Header.tsx
 │   │   ├── BillCard.tsx
@@ -161,10 +161,10 @@ frontend/
 │   │   ├── MeetingChatbot.tsx
 │   │   └── Pagination.tsx
 │   ├── pages/             
-│   │   ├── Home/          # 홈 페이지
-│   │   ├── BillPage/      # 법률안 목록 페이지
-│   │   ├── BillDetailPage/# 법률안 상세 페이지
-│   │   └── ConferencePage/# 국회 회의 페이지
+│   │   ├── Home/          # Home page
+│   │   ├── BillPage/      # Bill list page
+│   │   ├── BillDetailPage/# Bill detail page
+│   │   └── ConferencePage/# Assembly meeting page
 │   ├── routes/           
 │   ├── styles/            
 │   ├── utils/             
@@ -174,56 +174,56 @@ frontend/
 ```
 
 
-## 🔌 API 명세
+## 🔌 API Specification
 
 ### Bill API
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/bills` | 전체 법률안 목록 조회 |
-| GET | `/api/bills/{id}` | 법률안 상세 조회 |
-| GET | `/api/bills/page` | 페이지네이션 조회 (tag, sort 필터) |
-| GET | `/api/bills/search` | 키워드 검색 |
-| POST | `/api/bills/sync` | 국회 API 동기화 |
-| POST | `/api/bills/{id}/vote` | 투표 (찬성/반대) |
+| GET | `/api/bills` | Get all bills |
+| GET | `/api/bills/{id}` | Get bill details |
+| GET | `/api/bills/page` | Paginated query (tag, sort filters) |
+| GET | `/api/bills/search` | Keyword search |
+| POST | `/api/bills/sync` | Sync with National Assembly API |
+| POST | `/api/bills/{id}/vote` | Vote (approve/oppose) |
 
 ### Meeting API
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/meetings` | 회의 목록 조회 (커서 기반 페이지네이션) |
-| GET | `/api/meetings/latest` | 최신 회의 1건 조회 |
+| GET | `/api/meetings` | Get meetings (cursor-based pagination) |
+| GET | `/api/meetings/latest` | Get latest meeting |
 
 ### ChatBot API
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| POST | `/api/chatbot/chat/stream` | SSE 스트리밍 채팅 |
-| POST | `/api/chatbot/session` | 세션 생성 |
-| GET | `/api/chatbot/health` | 헬스체크 |
+| POST | `/api/chatbot/chat/stream` | SSE streaming chat |
+| POST | `/api/chatbot/session` | Create session |
+| GET | `/api/chatbot/health` | Health check |
 
 
-## 🎨 주요 페이지
+## 🎨 Main Pages
 
-### 1. 홈 (`/`)
-- 법률안 하이라이트
-- 오늘의 국회 회의 요약
-- 실시간 인기 법률안 요약
+### 1. Home (`/`)
+- Bill highlights
+- Today's Assembly meeting summary
+- Real-time popular bill summary
 
-### 2. 법률안 목록 (`/bills`)
-- 전체 법률안 목록
-- 카테고리별 필터링
-- 검색 및 정렬 기능
+### 2. Bill List (`/bills`)
+- Complete bill listing
+- Category filtering
+- Search and sort features
 
-### 3. 법률안 상세 (`/bills/:id`)
-- 법률안 상세 정보
-- 진행 상태 및 투표 현황
-- AI 챗봇을 통한 법률안 질의응답
+### 3. Bill Detail (`/bills/:id`)
+- Detailed bill information
+- Status and voting results
+- AI chatbot Q&A about the bill
 
-### 4. 국회 회의 (`/conferences`)
-- 국회 회의록 목록
-- AI 요약 정보
-- 회의 내용 챗봇 질의응답
+### 4. Assembly Meetings (`/conferences`)
+- Meeting record list
+- AI summary information
+- Chatbot Q&A about meeting content
 
 
-## 🚀 실행 방법
+## 🚀 Getting Started
 
 ### Backend
 ```bash
@@ -239,6 +239,6 @@ npm run dev
 ```
 
 
-## 📄 라이선스
+## 📄 License
 
-이 프로젝트는 MIT 라이선스를 따릅니다.
+This project is licensed under the MIT License.
